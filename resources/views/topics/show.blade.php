@@ -16,7 +16,7 @@
           <hr>
           <div class="media">
             <div align="center">
-              <a href="{{ route('users.show', $topic->user->id) }}">
+              <a href="{{ $topic->link() }}">
                 <img class="thumbnail img-fluid" src="{{ $topic->user->avatar }}" width="300px" height="300px">
               </a>
             </div>
@@ -34,7 +34,6 @@
 
           <div class="article-meta text-center text-secondary">
             {{ $topic->created_at->diffForHumans() }}
-            ⋅
             <i class="far fa-comment"></i>
             {{ $topic->reply_count }}
           </div>
@@ -43,7 +42,7 @@
             {!! $topic->body !!}
           </div>
           @can('update', $topic)
-          <<div class="operate">
+          <div class="operate">
               <hr>
               <a href="{{ route('topics.edit', $topic->id) }}" class="btn btn-outline-secondary btn-sm" role="button">
                 <i class="far fa-edit"></i> 编辑
